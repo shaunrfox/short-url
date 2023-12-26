@@ -1,10 +1,25 @@
-# Welcome to Remix!
+# Short URL generator
 
-- [Remix Docs](https://remix.run/docs)
+This is a URL shortener built using the following:
+
+- MongoDB (via Docker)
+- Prisma
+- Remix
+- Tamagui UI library
+
+---
+
+## Database setup
+
+You need a running MongoDB instance named `short-urls` and a `.env` file with `DATABASE_URL='PATH_TO_YOUR_DATABASE'` .
+
+Then, generate the Prisma Client with the following command:
+
+```sh
+prisma generate
+```
 
 ## Development
-
-From your terminal:
 
 ```sh
 npm run dev
@@ -36,3 +51,9 @@ Make sure to deploy the output of `remix build`
 
 - `build/`
 - `public/build/`
+
+---
+
+### Links
+
+- [Remix Docs](https://remix.run/docs)
