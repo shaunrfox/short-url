@@ -16,7 +16,8 @@ You need a running MongoDB instance named `short-urls` and a `.env` file with `D
 Then, generate the Prisma Client with the following command:
 
 ```sh
-prisma generate
+npm install prisma --save-dev
+npx prisma generate
 ```
 
 ## Development
