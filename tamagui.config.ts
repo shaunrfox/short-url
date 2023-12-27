@@ -1,12 +1,12 @@
+import { createTamagui } from '@tamagui/web'
 import { config } from '@tamagui/config/v2'
 
-import { createTamagui } from 'tamagui'
 const tamaguiConfig = createTamagui(config)
 // this makes typescript properly type everything based on the config
 
 type Conf = typeof tamaguiConfig
 
-declare module 'tamagui' {
+declare module '@tamagui/web' {
 
   interface TamaguiCustomConfig extends Conf {}
 

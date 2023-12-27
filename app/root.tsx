@@ -11,8 +11,8 @@ import {
 
 import "@tamagui/core/reset.css";
 
-import { TamaguiProvider } from "tamagui";
-import tamaguiConfig from "./utils/tamagui.config";
+import { TamaguiProvider } from "@tamagui/web";
+import tamaguiConfig from "../tamagui.config";
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
