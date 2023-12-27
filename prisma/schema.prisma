@@ -21,6 +21,7 @@ model Link {
 
   clicks     Int       @default(0)
   active     Boolean   @default(true)
+  author     String    @default("Mr. Potato Head")
   // author     User      @relation(fields: [authorId], references: [id])
   // authorId   String    @unique
   expiration DateTime?

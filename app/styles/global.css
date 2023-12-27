@@ -1,0 +1,366 @@
+/***
+    The new CSS reset - version 1.11.2 (last updated 15.11.2023)
+    GitHub page: https://github.com/elad2412/the-new-css-reset
+***/
+/*
+    Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
+    - The "symbol *" part is to solve Firefox SVG sprite bug
+    - The "html" element is excluded, otherwise a bug in Chrome breaks the CSS hyphens property (https://github.com/elad2412/the-new-css-reset/issues/36)
+ */
+*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
+  all: unset;
+  display: revert;
+}
+
+/* Preferred box-sizing value */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Fix mobile Safari increase font-size on landscape mode */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Reapply the pointer cursor for anchor tags */
+a, button {
+  cursor: revert;
+}
+
+/* Remove list styles (bullets/numbers) */
+ol, ul, menu, summary {
+  list-style: none;
+}
+
+/* For images to not be able to exceed their container */
+img {
+  max-inline-size: 100%;
+  max-block-size: 100%;
+}
+
+/* removes spacing between cells in tables */
+table {
+  border-collapse: collapse;
+}
+
+/* Safari - solving issue when using user-select:none on the <body> text input doesn't working */
+input, textarea {
+  -webkit-user-select: auto;
+}
+
+/* revert the 'white-space' property for textarea elements on Safari */
+textarea {
+  white-space: revert;
+}
+
+/* minimum style to allow to style meter element */
+meter {
+  -webkit-appearance: revert;
+  appearance: revert;
+}
+
+/* preformatted text - use only for this feature */
+:where(pre) {
+  all: revert;
+  box-sizing: border-box;
+}
+
+/* reset default text opacity of input placeholder */
+::placeholder {
+  color: unset;
+}
+
+/* fix the feature of 'hidden' attribute.
+   display:revert; revert to element instead of attribute */
+:where([hidden]) {
+  display: none;
+}
+
+/* revert for bug in Chromium browsers
+   - fix for the content editable attribute will work properly.
+   - webkit-user-select: auto; added for Safari in case of using user-select:none on wrapper element*/
+:where([contenteditable]:not([contenteditable=false])) {
+  -moz-user-modify: read-write;
+  -webkit-user-modify: read-write;
+  overflow-wrap: break-word;
+  -webkit-line-break: after-white-space;
+  -webkit-user-select: auto;
+}
+
+/* apply back the draggable feature - exist only in Chromium and Safari */
+:where([draggable=true]) {
+  -webkit-user-drag: element;
+}
+
+/* Revert Modal native behavior */
+:where(dialog:modal) {
+  all: revert;
+  box-sizing: border-box;
+}
+
+/* Remove details summary webkit styles */
+::-webkit-details-marker {
+  display: none;
+}
+
+:root {
+  background-color: #F7F9FA;
+  color: #565C65;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Source Sans Pro", "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+  color: #2D2E2F;
+}
+
+h1 {
+  font-size: 2rem;
+  line-height: 112.5%;
+}
+
+h2 {
+  font-size: 1.25rem;
+  line-height: 140%;
+}
+
+h3 {
+  font-size: 1rem;
+  line-height: 150%;
+}
+
+a {
+  color: #0076DA;
+  text-decoration: underline;
+}
+a:focus-visible {
+  outline-color: #2491FF;
+  outline-width: 1px;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+a:hover {
+  color: #2491FF;
+}
+a:active {
+  color: #005EA2;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  border-bottom: 0.0625rem solid #C6CACE;
+  background-color: #2D2E2F;
+}
+.main-header h1 {
+  color: #EDEFF0;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+/*
+------------------------------------
+BUTTONS
+------------------------------------
+*/
+.button {
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 125%;
+  border-radius: 0.5rem;
+  border-color: transparent;
+  border-width: 0.125rem;
+  border-style: solid;
+  outline: none;
+  text-decoration: none;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  cursor: pointer;
+}
+.button:disabled {
+  opacity: 0.4;
+}
+.button.icon-button {
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+  padding-left: 0.125rem;
+  padding-right: 0.125rem;
+  line-height: 112.5%;
+  display: block;
+  font-size: 0rem;
+}
+.button.variant-standard {
+  background-color: #EDEFF0;
+  color: #2D2E2F;
+}
+.button.variant-standard:hover {
+  background-color: #F7F9FA;
+}
+.button.variant-standard:active {
+  background-color: #C6CACE;
+  border-color: transparent;
+}
+.button.variant-standard:focus-visible {
+  background-color: #0076DA;
+}
+.button.variant-standard:disabled:hover {
+  background-color: #EDEFF0;
+}
+.button.variant-primary {
+  background-color: #0076DA;
+  color: #FFFFFF;
+}
+.button.variant-primary:hover {
+  background-color: #2491FF;
+}
+.button.variant-primary:active {
+  background-color: #005EA2;
+  border-color: transparent;
+}
+.button.variant-primary:focus-visible {
+  background-color: #0B4778;
+}
+.button.variant-primary:disabled:hover {
+  background-color: #0076DA;
+}
+.button.variant-hollow {
+  background-color: transparent;
+  color: #2D2E2F;
+}
+.button.variant-hollow:hover {
+  background-color: #EDEFF0;
+  color: #0076DA;
+}
+.button.variant-hollow:active {
+  background-color: #C6CACE;
+  border-color: transparent;
+}
+.button.variant-hollow:focus-visible {
+  border-color: #0076DA;
+  background-color: #EDEFF0;
+}
+.button.variant-hollow:focus-visible:active {
+  background-color: #C6CACE;
+}
+.button.variant-hollow:disabled:hover {
+  background-color: transparent;
+}
+.button.variant-danger {
+  background-color: #E52207;
+  color: #FFFFFF;
+}
+.button.variant-danger:hover {
+  background-color: #FB5A47;
+}
+.button.variant-danger:active {
+  background-color: #B50909;
+  border-color: transparent;
+}
+.button.variant-danger:focus-visible {
+  background-color: #8B0A03;
+}
+.button.variant-danger:disabled:hover {
+  background-color: #E52207;
+}
+.button.variant-accent {
+  background-color: #008480;
+  color: #FFFFFF;
+}
+.button.variant-accent:hover {
+  background-color: #00A398;
+}
+.button.variant-accent:active {
+  background-color: #0F6460;
+  border-color: transparent;
+}
+.button.variant-accent:focus-visible {
+  background-color: #0B4B3F;
+}
+.button.variant-accent:disabled:hover {
+  background-color: #008480;
+}
+
+/*
+------------------------------------
+LINK LIST
+------------------------------------
+*/
+.link-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 1500px;
+  width: 100%;
+  padding: 1.5rem;
+}
+
+.item-main,
+.link-list-header {
+  display: grid;
+  grid-template-columns: 80px 2fr 80px 1fr 60px;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  align-items: center;
+}
+
+.link-list-header,
+.link-list-item {
+  border-bottom: 0.0625rem solid #C6CACE;
+  padding: 0.75rem;
+}
+
+.link-list-header {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.0625rem;
+}
+
+.link-list-item .active-status {
+  color: #008480;
+  padding-left: 0.75rem;
+}
+.link-list-item .urls {
+  display: flex;
+  flex-direction: column;
+}
+.link-list-item .vanity-url {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.25rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+.link-list-item .target-url {
+  font-size: 0.75rem;
+  color: #8D9297;
+}
+
+/*# sourceMappingURL=global.css.map */
