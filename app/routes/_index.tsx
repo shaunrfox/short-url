@@ -7,6 +7,7 @@ import Check from "~/components/icons/check";
 import Copy from "~/components/icons/copy";
 import { format } from "date-fns";
 import Button from "~/components/button";
+import ToggleSwitch from "~/components/toggleSwitch";
 
 interface FetcherResponse {
   targetUrl: string;
@@ -67,6 +68,7 @@ export default function Index() {
     <main className="container">
       <header className="main-header">
         <h1>🔗 Link Shortener</h1>
+        <Button variant={"primary"}>Add link</Button>
       </header>
 
       <div className="link-list-wrapper">
@@ -83,7 +85,11 @@ export default function Index() {
               <li key={link.id} className="link-list-item">
                 <div className="item-main">
                   <div className="active-status">
-                    {link.active ? <Check /> : ""}
+                    <ToggleSwitch
+                      checked={link.active}
+                      keyId={link.id}
+                      label="Active"
+                    />
                   </div>
                   <div className="urls">
                     <div className="vanity-url">
